@@ -20,6 +20,8 @@ initializePassport(
 const users = []
 
 app.set('view-engine', 'ejs')
+//  Po wysłaniu formularza, dane będą przesłane jako surowy ciąg tekstowy - w formacie : username=john_doe&email=john@example.com
+//  Parsowanie URL-encoded danych umożliwia dostęp do tych danych w strukturze obiektów JS. req.body jest 'undefined' bez parsowania //  console.log(req.body); // 'undefined'
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(session({
