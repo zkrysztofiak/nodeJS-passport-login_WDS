@@ -127,6 +127,10 @@ Parsowanie danych również pozwala na zaimplementowanie dodatkowych środków b
 Podsumowanie
 Parsowanie danych URL-encoded w przychodzących żądaniach HTTP jest kluczowe, ponieważ umożliwia:
 
+#### Podsumowanie:
+#####  `app.use(express.urlencoded({ extended: false }));`
+Parsowanie danych `URL-encoded` w przychodzących żądaniach HTTP jest kluczowe, ponieważ umożliwia:
+
 - Łatwe przetwarzanie i dostęp do danych formularzy w strukturze obiektów JavaScript.
 - Walidację i przetwarzanie danych w sposób bezpieczny i zorganizowany.
 - Umożliwienie aplikacjom webowym korzystania z danych w sposób efektywny i bezpieczny.
