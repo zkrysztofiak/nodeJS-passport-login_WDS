@@ -43,6 +43,8 @@ app.get('/special', (req, res) => {
 app.get('/user/:id', logRequestDetails, (req, res) => {
   res.send(`User ID: ${req.params.id}`);
 });
+// można nawet kilka funkcji użyć, po kolei będą wykonane:
+`app.get('/user/:id', logRequestDetails1, logRequestDetails2, logRequestDetails3, (req, res) => {.....}`
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
@@ -137,3 +139,16 @@ Parsowanie danych `URL-encoded` w przychodzących żądaniach HTTP jest kluczowe
 Bez tego kroku dane przesyłane przez użytkowników byłyby trudniejsze do obsługi i podatne na błędy oraz potencjalne zagrożenia bezpieczeństwa.
 - Wbudowane middleware takie jak `express.json()` i `express.urlencoded()` automatycznie zarządzają przepływem kontroli i nie wymagają wywoływania `next()` ręcznie. W przypadku własnych funkcji middleware, musisz wywołać next(), aby przekazać kontrolę do następnego middleware w stosie. Kolejność deklaracji middleware jest istotna, ponieważ middleware są wykonywane w tej kolejności, w jakiej są zadeklarowane.
 W przypadku danych URL-encoded używa się `express.urlencoded()`, a dla danych JSON `express.json()`.
+- Parsowanie odnosi się do ogólnego procesu analizy danych w celu przekształcenia ich do bardziej użytecznego formatu. Parsowanie może dotyczyć przekształcania danych tekstowych, takich jak pliki JSON, XML, CSV, a także innych formatów. Parsowanie jest szerszym pojęciem, które obejmuje deserializację jako jeden z jego przypadków
+- Serializacja to proces przekształcania obiektu w pamięci komputera do formatu, który można łatwo przechowywać lub przesyłać. Ten format może być tekstowy (np. JSON, XML) lub binarny. Serializacja umożliwia zapisanie stanu obiektu do pliku, bazy danych lub przesłanie go przez sieć, a następnie odtworzenie tego obiektu później (proces deserializacji).
+
+
+---
+
+##### WDS Learn Express JS In 35 Minutes
+https://www.youtube.com/watch?v=SccSCuHhOw0
+https://github.com/WebDevSimplified/express-crash-course
+
+##### WDS JWT Authentication Tutorial - Node.js  
+https://www.youtube.com/watch?v=mbsmsi7l3r4
+https://github.com/WebDevSimplified/JWT-Authentication
