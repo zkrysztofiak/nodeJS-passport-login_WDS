@@ -79,7 +79,7 @@ Przykład bez parsowania:
 
 ```JS
 app.post('/submit', (req, res) => {
-  // req.body jest undefined bez parsowania
+  // Bez middleware `express.urlencoded()` lub `express.json()`, `req.body` jest `undefined`
   console.log(req.body); // undefined
   res.send('Data received');
 });
@@ -91,7 +91,7 @@ Przykład z parsowaniem:
 app.use(express.urlencoded({ extended: false }));
 
 app.post('/submit', (req, res) => {
-  // req.body jest teraz obiektem JavaScript z danymi z formularza
+  // req.body jest teraz obiektem JS z danymi z formularza
   console.log(req.body); // { username: 'john_doe', email: 'john@example.com' }
   res.send('Data received');
 });
@@ -135,3 +135,5 @@ Parsowanie danych `URL-encoded` w przychodzących żądaniach HTTP jest kluczowe
 - Walidację i przetwarzanie danych w sposób bezpieczny i zorganizowany.
 - Umożliwienie aplikacjom webowym korzystania z danych w sposób efektywny i bezpieczny.
 Bez tego kroku dane przesyłane przez użytkowników byłyby trudniejsze do obsługi i podatne na błędy oraz potencjalne zagrożenia bezpieczeństwa.
+- Wbudowane middleware takie jak `express.json()` i `express.urlencoded()` automatycznie zarządzają przepływem kontroli i nie wymagają wywoływania `next()` ręcznie. W przypadku własnych funkcji middleware, musisz wywołać next(), aby przekazać kontrolę do następnego middleware w stosie. Kolejność deklaracji middleware jest istotna, ponieważ middleware są wykonywane w tej kolejności, w jakiej są zadeklarowane.
+W przypadku danych URL-encoded używa się `express.urlencoded()`, a dla danych JSON `express.json()`.
